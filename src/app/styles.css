@@ -1,0 +1,55 @@
+.textbox-transition {
+    padding-left: 10px;
+    display: none;
+    outline: none;
+    animation: textbox 800ms ease-in-out;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@keyframes textbox {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    
+    100% {
+        width: 400px;
+        opacity: 1;
+    }
+}
+
+.textbox-reverse-transition {
+    padding-left: 10px;
+    display: none;
+    outline: none;
+    animation: textbox-reverse 800ms ease-in-out;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@keyframes textbox-reverse {
+    0% {
+        width: 400px;
+        opacity: 1;
+    }
+    
+    100% {
+        width: 0px;
+        opacity: 0;
+    }
+}
+
+.nav-element::after{
+content: "";
+height: 2px;
+width: 0px;
+background-color: white;
+display: block;
+transition: width 400ms ;
+margin: auto;
+}
+
+.nav-element:hover::after{
+    width: 100%;
+}
