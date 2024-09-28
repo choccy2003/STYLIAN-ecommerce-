@@ -43,7 +43,8 @@ const ProductGrid: React.FC = () => {
         0: { items: 1 },
         720: { items: 2 },
         1077: { items: 3 },
-        1372: { items: 4 }
+        1372: { items: 4 },
+        1700: { items: 5 }
       }}
       controlsStrategy="responsive"
       disableDotsControls

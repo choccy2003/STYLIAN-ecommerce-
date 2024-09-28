@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LuUser2 } from "react-icons/lu";
@@ -6,12 +6,14 @@ import { PiShoppingCartSimple } from "react-icons/pi"
 import { IoIosSearch } from "react-icons/io";
 import "../app/styles.css"
 import { useRef, useState } from "react";
+import { useRouter } from 'next/navigation';
 
 const Navbar:React.FC = ()=>{
 const searchBox = useRef<HTMLInputElement>(null)
+const router = useRouter()
 const [searchBoxStatus,setSearchBoxStatus]= useState(false)
     return(
-        <div className="top-0 z-50">
+        <div className="top-0 z-50 mt-2">
         <div style={{fontFamily:"Roboto"}} className="flex text-white text-md items-center pt-2 pb-1.5 px-6">
             <div className="text-2xl" >
                 <GiHamburgerMenu/>
@@ -25,7 +27,7 @@ const [searchBoxStatus,setSearchBoxStatus]= useState(false)
             <div className="ml-12 cursor-pointer nav-element max-md:hidden">
                 Pages
             </div>
-            <div className="ml-12 cursor-pointer nav-element max-md:hidden">
+            <div onClick={()=>{router.push('/Browse-Products')}} className="ml-12 cursor-pointer nav-element max-md:hidden">
                 Shop
             </div>
             <div className="ml-12 cursor-pointer nav-element max-md:hidden">
