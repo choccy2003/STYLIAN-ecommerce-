@@ -21,7 +21,7 @@ const products = [
     { id: 10, name: 'Product 4',price:35.99 },
     { id: 11, name: 'Product 5',price:59.99 },
     { id: 12, name: 'Product 6',price:72.99 },
-    { id: 1, name: 'Product 1',price:56.99 },
+    { id: 55, name: 'Product 1',price:56.99 },
     { id: 14, name: 'Product 2',price:40.99 },
     { id: 15, name: 'Product 3',price:117.99 },
     { id: 16, name: 'Product 4',price:35.99 },

@@ -17,7 +17,7 @@ const ProductCataloguePage:React.FC = ()=>{
     return(<div>
     <Navbar/>
     <div className="mt-10 ml-6">
-       <LinkBuilder/> 
+      <LinkBuilder/>  
     </div>
     <div className="relative z-50">
       <SortList/>
