@@ -9,6 +9,7 @@ import { PiTruck } from "react-icons/pi";
 import { MdSupportAgent } from "react-icons/md";
 import { BsCashCoin } from "react-icons/bs";
 import ProductGrid from "./ProductGrid";
+import ShopRedirectButton from "./ShopRedirectButton";
 const HomePage:React.FC = ()=>{
 
 
@@ -46,8 +47,9 @@ const HomePage:React.FC = ()=>{
             <div className="text-8xl tracking-wide max-2xl:text-7xl max-xl:text-5xl max-sm:text-3xl max-sm:min-w-56">
                 Fashion Week
             </div>
-            <div style={{backgroundColor:"rgb(15 19 33)"}} className=" w-fit px-10 py-3 font-semibold text-lg mt-8 ml-1.5 cursor-pointer max-2xl:px-6 max-2xl:text-sm max-2xl:py-2 max-2xl:mt-4 max-sm:text-xs max-sm:px-4 max-sm:py-1.5 max-sm:mt-1 max-sm:ml-0.5">
-                Shop Now</div>
+            <div>
+              <ShopRedirectButton/>
+            </div>
             
           </div>
           

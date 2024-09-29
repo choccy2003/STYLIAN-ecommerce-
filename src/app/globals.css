@@ -6,6 +6,9 @@
 background: linear-gradient(to top, rgb(15, 16, 19), #1e2028);
 
 }
+body, html {
+  overflow-x: hidden !important;
+  }
 
 @layer base {
   :root {
@@ -228,3 +231,30 @@ transform: scale(1.02);
     }
   }
 
+  .filter-list-animation {
+    animation: filter-animation 600ms;
+
+   
+  }
+  .filter-list-animation-reverse {
+    animation: filter-animation-reverse 600ms;
+
+   
+  }
+
+  @keyframes filter-animation {
+    0%{
+      left:100%
+    }
+    100%{
+      left:0%
+    }
+  }
+  @keyframes filter-animation-reverse {
+    0%{
+      left:0%
+    }
+    100%{
+      left:100%
+    }
+  }

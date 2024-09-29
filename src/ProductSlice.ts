@@ -39,10 +39,7 @@ const products = [
     { id: 28, name: 'Product 5',price:59.99 },
     { id: 29, name: 'Product 6',price:72.99 },
     { id: 30, name: 'Product 2',price:40.99 },
-    { id: 31, name: 'Product 3',price:117.99 },
-    { id: 32, name: 'Product 4',price:35.99 },
-    { id: 33, name: 'Product 5',price:59.99 },
-    { id: 34, name: 'Product 6',price:72.99 }
+    
   ];
 
 const ProductSlice = createSlice({
