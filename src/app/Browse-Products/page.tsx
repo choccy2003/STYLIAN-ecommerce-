@@ -29,8 +29,8 @@ const ProductCataloguePage:React.FC = ()=>{
     
     
     <div className="flex mt-8 max-lg:mt-4 z-10">
-        <div  className="min-w-80 ml-10 -mt-10 relative max-lg:fixed max-lg:-left-96">
-          <FilterAccordian/>
+        <div className="min-w-80 ml-10 -mt-10 relative max-lg:fixed max-lg:-left-96">
+          <FilterAccordian />
           
           
         </div>

@@ -258,3 +258,7 @@ transform: scale(1.02);
       left:100%
     }
   }
+
+  .star-rating svg{
+    display: inline;
+  }

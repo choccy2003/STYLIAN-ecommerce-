@@ -21,7 +21,7 @@ if(pathArray){
             return(<div key={0} onClick={()=>{router.push('/')}} className="flex items-center gap-1.5">Home</div>)
         }
         else if(pathArray!=""){
-         return <div onClick={()=>{if(pathArray!='Product'){router.push(`/${pathArray}`)}}} className="flex items-center gap-1.5" key={indexes[i]}>{pathArray==pathArray[pathArray.length-1]?<></>:<div style={{fontSize:"16px"}}><IoIosArrowForward/></div>}{pathArray.replace('-',' ')} </div>    
+         return <div onClick={()=>{if(pathArray!='Product'){router.push(`/${pathArray}`)}}} className="flex items-center gap-1.5" key={indexes[i]}>{pathArray==pathArray[pathArray.length]?<></>:<div style={{fontSize:"16px"}}><IoIosArrowForward/></div>}{pathArray.replace('-',' ')} </div>    
         }
         
        })}

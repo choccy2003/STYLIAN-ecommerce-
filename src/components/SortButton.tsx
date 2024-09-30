@@ -47,7 +47,7 @@ useEffect(() => {
 <div style={{fontSize:"22px"}}><CiFilter/></div>
 <div>Filter</div>
 </div>
-<div ref={filterGridRef} style={{left:"100%"}} className="w-full hidden relative z-50 max-lg:absolute max-lg:top-48 max-lg:px-3 filter-list">
+<div ref={filterGridRef} style={{left:"100%",fontSize:"22px"}} className="w-full hidden relative z-50 max-lg:absolute max-lg:top-48 max-lg:px-3 filter-list">
           <FilterAccordian/>
           
           
