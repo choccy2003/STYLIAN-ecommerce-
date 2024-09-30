@@ -101,6 +101,9 @@ body, html {
     min-width: 550px !important;
     min-height: 550px !important;
   }
+  .product-name{
+    line-height: 32px !important;
+  }
 }
 
 @media screen and (max-width: 780px) {
