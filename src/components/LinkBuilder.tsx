@@ -7,7 +7,8 @@ const LinkBuilder =()=>{
 const path = usePathname()
 const [pathArray,setPathArray]=useState<string[]>()
 useEffect(()=>{
-setPathArray(path.split('/'))
+const pathArray = path.split('/').filter((path)=>path!=="Product")
+setPathArray(pathArray)
 },[path])
 const router = useRouter()
 const LinkRef = useRef<HTMLDivElement>(null)
@@ -21,7 +22,7 @@ if(pathArray){
             return(<div key={0} onClick={()=>{router.push('/')}} className="flex items-center gap-1.5">Home</div>)
         }
         else if(pathArray!=""){
-         return <div onClick={()=>{if(pathArray!='Product'){router.push(`/${pathArray}`)}}} className="flex items-center gap-1.5" key={indexes[i]}>{pathArray==pathArray[pathArray.length]?<></>:<div style={{fontSize:"16px"}}><IoIosArrowForward/></div>}{pathArray.replace('-',' ')} </div>    
+         return <div onClick={()=>{if(pathArray=="Home" || pathArray=="Browse-Products")router.push(`/${pathArray}`)}} className="flex items-center gap-1.5" key={indexes[i]}>{pathArray==pathArray[pathArray.length]?<></>:<div style={{fontSize:"16px"}}><IoIosArrowForward/></div>}{pathArray.replace('-',' ')} </div>    
         }
         
        })}
