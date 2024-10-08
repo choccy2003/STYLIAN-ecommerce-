@@ -31,10 +31,10 @@ const [currentProductImage,setCurrentProductImage]=useState<string>(productImgAr
                 <div style={{height:"740px",width:"670px",aspectRatio:"740/670"}} className='bg-black product-image'>
                 <img className='h-full w-full' style={{objectFit:"cover",cursor:"pointer"}} src={currentProductImage}/>
                 </div>
-                <div style={{width:"550px",overflowX:"scroll"}} className='flex gap-7 relative left-16 top-8 image-scroll max-md:left-10 max-md:top-4 max-sm:gap-3 max-sm:left-9 '>
+                <div style={{width:"550px",overflowX:"scroll"}} className='flex gap-7 relative left-16 top-8 image-scroll max-md:left-10 max-md:top-4 max-sm:gap-3 max-sm:left-14 max-xxs:left-9 '>
                     {productImgArray.map((img)=>{
                         return (
-                        <div onClick={()=>{setCurrentProductImage(img)}} key={img} className='w-28 min-w-28 h-32 bg-black max-md:min-w-20 max-md:h-24 max-sm:min-w-12 max-sm:h-14'>
+                        <div onClick={()=>{setCurrentProductImage(img)}} key={img} className='w-28 min-w-28 h-32 bg-black max-md:min-w-20 max-md:h-24 max-sm:min-w-16 max-sm:h-20 max-xxs:min-w-12 max-xxs:h-14'>
                             <img className='h-full w-full' style={{objectFit:"cover",cursor:"pointer"}} src={img}></img>
                         </div>)
                     })

@@ -153,16 +153,23 @@ body, html {
     grid-template-columns: repeat(auto-fit, minmax(192px, 1fr)) !important;
   }
   .product-image{
-    width: 300px !important;
-    height: 331px !important;
+    width: 400px !important;
+    height: 442px !important;
   }
   .image-scroll{
-    width: 230px !important;
+    width: 300px !important;
   }
 }
 @media screen and (max-width: 410px) {
   .catalogue-grid{
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)) !important;
+  }
+  .product-image{
+    width: 300px !important;
+    height: 331px !important;
+  }
+  .image-scroll{
+    width: 230px !important;
   }
 }
 .product-grid{
