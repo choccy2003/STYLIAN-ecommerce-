@@ -253,13 +253,13 @@ transform: scale(1.02);
     }
   }
 
-  .filter-list-animation {
-    animation: filter-animation 600ms;
+  .filter-list-animation,.cart-animation {
+    animation: filter-animation 800ms;
 
    
   }
-  .filter-list-animation-reverse {
-    animation: filter-animation-reverse 600ms;
+  .filter-list-animation-reverse,.cart-animation-reverse {
+    animation: filter-animation-reverse 800ms;
 
    
   }
@@ -303,3 +303,22 @@ transform: scale(1.02);
 .image-scroll{
   padding-bottom: 10px;
 }
+
+.cart-scroll::-webkit-scrollbar {
+  width: 6px; 
+  position: relative;
+}
+
+.cart-scroll::-webkit-scrollbar-thumb {
+  background-color: rgb(7 11 26);
+  border-radius: 4px; 
+ 
+ 
+}
+
+.cart-scroll::-webkit-scrollbar-track {
+  background-color: #343538; 
+  border-radius: 10px;
+
+}
+

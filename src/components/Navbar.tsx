@@ -7,11 +7,15 @@ import { IoIosSearch } from "react-icons/io";
 import "../app/styles.css"
 import { useRef, useState } from "react";
 import { useRouter } from 'next/navigation';
+import CartMenu from "./CartMenu";
+import CartMenuProvider from "./CartMenuProvider";
 
 const Navbar:React.FC = ()=>{
 const searchBox = useRef<HTMLInputElement>(null)
 const router = useRouter()
 const [searchBoxStatus,setSearchBoxStatus]= useState(false)
+const [cartMenuCloseBtn,setCartMenuCloseBtn] = useState<boolean>(true)
+
     return(
         <div className="top-0 z-50 mt-2">
         <div style={{fontFamily:"Roboto"}} className="flex text-white text-md items-center pt-2 pb-1.5 px-6">
@@ -19,7 +23,7 @@ const [searchBoxStatus,setSearchBoxStatus]= useState(false)
                 <GiHamburgerMenu/>
             </div>
             <div className="ml-8 text-2xl font-medium cursor-pointer  ">
-               <span>STYLIAN </span>
+               <span>OutfitZen </span>
             </div>
             <div className="ml-12 cursor-pointer nav-element max-md:hidden">
                 Home
@@ -64,10 +68,14 @@ const [searchBoxStatus,setSearchBoxStatus]= useState(false)
             <div style={{fontSize:"21px"}} className="text-xl ml-6 cursor-pointer">
                 <LuUser2/>
             </div>
-            <div className="text-2xl mr-6 ml-6 cursor-pointer max-md:mr-0">
+            <div onClick={()=>{cartMenuCloseBtn?setCartMenuCloseBtn(false):setCartMenuCloseBtn(true)}} className="text-2xl mr-6 ml-6 cursor-pointer max-md:mr-0">
                 <PiShoppingCartSimple/>
             </div>
         </div>
+   
+            <CartMenuProvider cartMenuCloseBtn={cartMenuCloseBtn} setCartMenuCloseBtn={setCartMenuCloseBtn} /> 
+      
+            
         </div>
     )
 }

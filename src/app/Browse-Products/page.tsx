@@ -21,7 +21,7 @@ const ProductCataloguePage:React.FC = ()=>{
       <LinkBuilder/>  
     </div>
     <div className="flex items-end">
-<div className="relative z-50 ml-auto">
+<div className="relative z-30 ml-auto">
       <SortList/>
     </div>
       <SortButton/>

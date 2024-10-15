@@ -27,7 +27,8 @@ const Footer: React.FC = ( )=>{
             </ul>
             </div>
         </div>
-        <div style={{minWidth:"84px"}}>
+        <div className="gap-28 hidden max-sm:flex">
+<div style={{minWidth:"84px"}}>
             <div className="text-lg font-semibold">About</div>
             <ul className="text-sm opacity-70 mt-5 ml-4" style={{listStyleType:"disc"}}>
                 <li className="pb-4 cursor-pointer">About us</li>
@@ -47,11 +48,33 @@ const Footer: React.FC = ( )=>{
                 <li className="pb-4 cursor-pointer">FAQs</li>
             </ul>
         </div>
+        </div>
+        <div className="max-sm:hidden" style={{minWidth:"84px"}}>
+            <div className="text-lg font-semibold">About</div>
+            <ul className="text-sm opacity-70 mt-5 ml-4" style={{listStyleType:"disc"}}>
+                <li className="pb-4 cursor-pointer">About us</li>
+                <li className="pb-4 cursor-pointer">Collection</li>
+                <li className="pb-4 cursor-pointer">Shop</li>
+                <li className="pb-4 cursor-pointer">Blogs</li>
+                <li className="pb-4 cursor-pointer">Contact Us</li>
+            </ul>
+        </div>
+        <div className="max-sm:hidden" style={{minWidth:"117px"}}>
+            <div className="text-lg font-semibold">Useful Links</div>
+            <ul className="text-sm opacity-70 mt-5 ml-4" style={{listStyleType:"disc"}}>
+                <li className="pb-4 cursor-pointer">Privacy Policy</li>
+                <li className="pb-4 cursor-pointer">Terms of use</li>
+                <li className="pb-4 cursor-pointer">Support</li>
+                <li className="pb-4 cursor-pointer">Shipping Details</li>
+                <li className="pb-4 cursor-pointer">FAQs</li>
+            </ul>
+        </div>
+        
         <div style={{minWidth:"292px"}}>
         <div className="text-lg font-semibold">Newsletter</div>
-        <div className="mt-5 opacity-70 text-sm w-72">Subscribe to our newsletter for latests updates and information.</div>
+        <div className="mt-5 opacity-70 text-sm w-72 max-sm:w-80">Subscribe to our newsletter for latests updates and information.</div>
         <div className="flex gap-2">
-            <input type="text" className="text-sm mt-7" placeholder="Enter your email..." style={{width:"260px",height:"30px",backgroundColor:"#1b1d25",borderBottom:"1px solid rgb(255,255,255,0.4)",outline:"none"}} ></input>
+            <input type="text" className="text-sm mt-7" placeholder="Enter your email..." style={{width:"300px",height:"30px",backgroundColor:"#1b1d25",borderBottom:"1px solid rgb(255,255,255,0.4)",outline:"none"}} ></input>
             <div className="cursor-pointer text-2xl opacity-70 mt-8"><RiMailSendFill/></div>
             </div>
             
