@@ -63,7 +63,7 @@ const CartMenu:React.FC<Props> = (props) => {
        
        {
         userCart?userCart.map((cart)=>{
-          return(<div className='flex mt-5 mr-5 h-28 gap-4 '><div className='w-24 h-24 bg-red-50 rounded-sm'></div><div className='flex flex-col'><div className='text-lg'>{cart.productName}</div><div className='text-sm opacity-60 ml-0.5'>Size: {cart.productSize}</div><div className='mt-auto pb-5 text-lg'>$ {cart.productPrice}</div></div><div className='flex flex-col-reverse h-24 ml-auto text-xl cursor-pointer justify-around opacity-75 items-center'>
+          return(<div key={cart.productName} className='flex mt-5 mr-5 h-28 gap-4 '><div className='w-24 h-24 bg-red-50 rounded-sm'></div><div className='flex flex-col'><div className='text-lg'>{cart.productName}</div><div className='text-sm opacity-60 ml-0.5'>Size: {cart.productSize}</div><div className='mt-auto pb-5 text-lg'>$ {cart.productPrice}</div></div><div className='flex flex-col-reverse h-24 ml-auto text-xl cursor-pointer justify-around opacity-75 items-center'>
             <div style={{border:"2px solid rgb(255,255,255,0.75)",borderRadius:"100%",padding:"5px"}} className='text-xs'><FaMinus/></div><div className='text-base font-semibold mt-0.5'>{cart.productQuantity}</div><div style={{border:"2px solid rgb(255,255,255,0.75)",borderRadius:"100%",padding:"5px"}} className='text-xs '><FaPlus/></div>
         </div></div>)
         }):(<></>)
