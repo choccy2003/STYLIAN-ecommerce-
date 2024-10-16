@@ -48,7 +48,7 @@ const CartMenu:React.FC<Props> = (props) => {
     else if(props.cartMenuCloseBtn && cartMenuRef.current){
       cartMenuRef.current.classList.remove("cart-animation")
       cartMenuRef.current.classList.add("cart-animation-reverse")
-      cartMenuRef.current.style.left="20%"
+      cartMenuRef.current.style.left="100%"
     }
     }
 
@@ -57,7 +57,7 @@ const CartMenu:React.FC<Props> = (props) => {
   },[props.cartMenuCloseBtn])
   return (
     <div ref={cartMenuRef} className='relative left-full'>
-          <div style={{marginLeft:"auto",backgroundColor:"rgb(35 38 49)",fontFamily:"Roboto"}} className='absolute w-96 left-0 right-0 z-50 '>
+          <div style={{backgroundColor:"rgb(35 38 49)",fontFamily:"Roboto"}} className='absolute w-96 ml-auto left-0 right-0 z-50 max-xs:w-full '>
         <div className='flex items-center'><div className='text-2xl my-4 ml-5'>Your Cart</div><div style={{cursor:"pointer"}} className='ml-auto mr-3'><RxCross2 onClick={()=>{props.setCartMenuCloseBtn(true)}} fontSize={26} /></div></div>
        <div style={{height:"450px"}} className='cart-scroll overflow-y-scroll mr-1 ml-5'>
        
@@ -83,7 +83,7 @@ const CartMenu:React.FC<Props> = (props) => {
         <div className='flex my-2 text-xl'><div>Estimated Total: </div><div className='ml-auto mr-5'>${cartTotal>0?cartTotal + shippingCost:0}</div></div>
         
        </div>
-       <div  style={{border:"1px solid rgb(255,255,255,0.5)"}} className='w-80 py-2 mb-5 mt-2 m-auto cursor-pointer opacity-90 max-1.5xl:w-full max-1.5xl:mx-auto '>
+       <div  style={{border:"1px solid rgb(255,255,255,0.5)"}} className='w-80 py-2 mb-5 mt-2 m-auto cursor-pointer opacity-90 max-xs:w-11/12 '>
                     <div className='w-fit m-auto text-lg' >Checkout</div>
                 </div>
 
