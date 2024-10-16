@@ -34,7 +34,10 @@ const dispatch = useDispatch()
 useEffect(()=>{
 dispatch(setUserCart(userCart))
 },[userCart])
-
+useEffect(()=>{
+    if(user)
+    setCart(user.userCart)
+},[user])
 const updateUserCart = ()=>{
         
 

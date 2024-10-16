@@ -4,8 +4,9 @@ import { RootState } from '@/store';
 import React, {useEffect, useState,useRef} from 'react'
 import { FaPlus,FaMinus } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
-import { useSelector, UseSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Dispatch, SetStateAction } from 'react';
+import { setUserCart } from "@/UserSlice";
 interface Cart {
     productName:string,
     productPrice:number,
@@ -21,15 +22,16 @@ const CartMenu:React.FC<Props> = (props) => {
   const shippingCost = 10
   const [quantityCounter,setQuantityCounter] = useState<number>(1)
   const user = useSelector((state:RootState)=>state.user.user)
-  const [userCart,setUserCart] = useState<Cart[]>([])
+  const [userCart,setCart] = useState<Cart[]>([])
   const cartMenuRef = useRef<HTMLDivElement>(null)
   const [initialRender,setInitialRender]=useState<boolean>(true)
   const [cartTotal,setCartTotal]=useState<number>(0)
+  const dispatch = useDispatch()
   useEffect(()=>{
     if(user){
-          setUserCart(user.userCart)
+          setCart(user.userCart)
           const totalPrice = user.userCart.reduce((acc, cart) => {
-            return acc + cart.productPrice * cart.productQuantity; // Assuming each cart item has a quantity
+            return acc + cart.productPrice * cart.productQuantity; 
           }, 0);
           setCartTotal(totalPrice)
     }
@@ -55,6 +57,34 @@ const CartMenu:React.FC<Props> = (props) => {
     setInitialRender(false)
 
   },[props.cartMenuCloseBtn])
+  useEffect(()=>{
+    dispatch(setUserCart(userCart))
+    },[userCart])
+  const updateProductQuantity = (cartItem:Cart,quantity:number)=>{
+    const itemIndex = userCart.findIndex((cart)=>cart==cartItem)
+    console.log("index: "+itemIndex)
+    if(itemIndex!=-1){
+      setCart((prev)=>{
+        const tempCartArray = [...prev]
+        if(tempCartArray[itemIndex].productQuantity<20 && quantity==1){
+                  tempCartArray[itemIndex]={...tempCartArray[itemIndex],productQuantity:tempCartArray[itemIndex].productQuantity+quantity}
+        return tempCartArray
+        }
+        else if(tempCartArray[itemIndex].productQuantity>1 && quantity==-1){
+          tempCartArray[itemIndex]={...tempCartArray[itemIndex],productQuantity:tempCartArray[itemIndex].productQuantity+quantity}
+          return tempCartArray
+        }
+        else if(tempCartArray[itemIndex].productQuantity==1 && quantity==-1){
+          return [...prev.slice(0,itemIndex),...prev.slice(itemIndex+1)]
+        }
+        else{
+          return [...prev]
+        }
+
+      })
+    }
+  }
+
   return (
     <div ref={cartMenuRef} className='relative left-full'>
           <div style={{backgroundColor:"rgb(35 38 49)",fontFamily:"Roboto"}} className='absolute w-96 ml-auto left-0 right-0 z-50 max-xs:w-full '>
@@ -64,7 +94,7 @@ const CartMenu:React.FC<Props> = (props) => {
        {
         userCart?userCart.map((cart)=>{
           return(<div key={cart.productName} className='flex mt-5 mr-5 h-28 gap-4 '><div className='w-24 h-24 bg-red-50 rounded-sm'></div><div className='flex flex-col'><div className='text-lg'>{cart.productName}</div><div className='text-sm opacity-60 ml-0.5'>Size: {cart.productSize}</div><div className='mt-auto pb-5 text-lg'>$ {cart.productPrice}</div></div><div className='flex flex-col-reverse h-24 ml-auto text-xl cursor-pointer justify-around opacity-75 items-center'>
-            <div style={{border:"2px solid rgb(255,255,255,0.75)",borderRadius:"100%",padding:"5px"}} className='text-xs'><FaMinus/></div><div className='text-base font-semibold mt-0.5'>{cart.productQuantity}</div><div style={{border:"2px solid rgb(255,255,255,0.75)",borderRadius:"100%",padding:"5px"}} className='text-xs '><FaPlus/></div>
+            <div onClick={()=>{updateProductQuantity(cart,-1)}} style={{border:"2px solid rgb(255,255,255,0.75)",borderRadius:"100%",padding:"5px"}} className='text-xs'><FaMinus/></div><div className='text-base font-semibold mt-0.5'>{cart.productQuantity}</div><div onClick={()=>{updateProductQuantity(cart,1)}} style={{border:"2px solid rgb(255,255,255,0.75)",borderRadius:"100%",padding:"5px"}} className='text-xs '><FaPlus/></div>
         </div></div>)
         }):(<></>)
        }
