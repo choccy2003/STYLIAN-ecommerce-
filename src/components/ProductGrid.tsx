@@ -33,8 +33,8 @@ const ProductGrid: React.FC = () => {
   if (!hydrated) {
     return (<div style={{marginLeft:"48%",marginTop:"100px"}} className="loader"></div>)
   }
-
-  return (
+  else{
+      return (
     <AliceCarousel
       items={items}
       mouseTracking
@@ -51,6 +51,8 @@ const ProductGrid: React.FC = () => {
       disableButtonsControls
     />
   );
+  }
+
 };
 
 export default ProductGrid;

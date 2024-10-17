@@ -26,44 +26,42 @@ const [currentProductImage,setCurrentProductImage]=useState<string>(productImgAr
 const [quantityCounter,setQuantityCounter] = useState<number>(1)
 const [selectedSize,SetSelectedSize]=useState<string>(productSizes[0])
 const user = useSelector((state:RootState)=>state.user.user)
-const [userCart,setCart]=useState<Cart[]>(user?user.userCart:[])
+const userCart = user?user.userCart:[]
 const productName="name 1"
 console.log(user)
 const dispatch = useDispatch()
 
-useEffect(()=>{
-dispatch(setUserCart(userCart))
-},[userCart])
-useEffect(()=>{
-    if(user)
-    setCart(user.userCart)
-},[user])
-const updateUserCart = ()=>{
-        
+  const updateUserCart = () => {
+    const itemIndex = userCart.findIndex(
+      (cart) => cart.productName === productName && cart.productSize === selectedSize
+    );
 
-        setCart((prev)=>{
+    let updatedCart;
+    
+    if (itemIndex !== -1) {
+      // Update existing product's quantity
+      updatedCart = [...userCart];
+      updatedCart[itemIndex] = {
+        ...updatedCart[itemIndex],
+        productQuantity: updatedCart[itemIndex].productQuantity + quantityCounter,
+      };
+    } else {
+      // Add new product to the cart
+      updatedCart = [
+        ...userCart,
+        {
+          productName: productName,
+          productPrice: 40,
+          productQuantity: quantityCounter,
+          productSize: selectedSize,
+          productThumbnail: '',
+        },
+      ];
+    }
 
-        const itemIndex = userCart.findIndex((cart)=>cart.productName == productName && cart.productSize == selectedSize)
-        
-        if(itemIndex !== -1){
-            const updatedCart = [...prev];
-            updatedCart[itemIndex] = {...updatedCart[itemIndex],productQuantity:updatedCart[itemIndex].productQuantity +quantityCounter}
-            return updatedCart;
-        }
-        else{
-           return [ ...prev,
-        {productName:productName,
-        productPrice:40,
-        productQuantity:quantityCounter,
-        productSize:selectedSize,
-        productThumbnail:'' 
-        }] 
-        }
-           
-})  
-
-  
-}
+    // Dispatch the updated cart directly to Redux
+    dispatch(setUserCart(updatedCart));
+  }
 
 
     return(<>

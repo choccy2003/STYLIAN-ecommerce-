@@ -10,7 +10,7 @@ interface product {
 
 const ProductCard:React.FC<product> = (props)=>{
 
-
+    
     return(
         <>
         <div className="w-72 h-96 bg-black m-auto">

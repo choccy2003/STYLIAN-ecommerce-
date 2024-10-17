@@ -20,23 +20,20 @@ interface Props {
 }
 const CartMenu:React.FC<Props> = (props) => {
   const shippingCost = 10
-  const [quantityCounter,setQuantityCounter] = useState<number>(1)
   const user = useSelector((state:RootState)=>state.user.user)
-  const [userCart,setCart] = useState<Cart[]>([])
+  const userCart = user?user.userCart:[]
   const cartMenuRef = useRef<HTMLDivElement>(null)
   const [initialRender,setInitialRender]=useState<boolean>(true)
   const [cartTotal,setCartTotal]=useState<number>(0)
   const dispatch = useDispatch()
+
   useEffect(()=>{
     if(user){
-          setCart(user.userCart)
           const totalPrice = user.userCart.reduce((acc, cart) => {
             return acc + cart.productPrice * cart.productQuantity; 
           }, 0);
           setCartTotal(totalPrice)
     }
-    
-
     
   },[user])
 
@@ -57,33 +54,27 @@ const CartMenu:React.FC<Props> = (props) => {
     setInitialRender(false)
 
   },[props.cartMenuCloseBtn])
-  useEffect(()=>{
-    dispatch(setUserCart(userCart))
-    },[userCart])
-  const updateProductQuantity = (cartItem:Cart,quantity:number)=>{
-    const itemIndex = userCart.findIndex((cart)=>cart==cartItem)
-    console.log("index: "+itemIndex)
-    if(itemIndex!=-1){
-      setCart((prev)=>{
-        const tempCartArray = [...prev]
-        if(tempCartArray[itemIndex].productQuantity<20 && quantity==1){
-                  tempCartArray[itemIndex]={...tempCartArray[itemIndex],productQuantity:tempCartArray[itemIndex].productQuantity+quantity}
-        return tempCartArray
-        }
-        else if(tempCartArray[itemIndex].productQuantity>1 && quantity==-1){
-          tempCartArray[itemIndex]={...tempCartArray[itemIndex],productQuantity:tempCartArray[itemIndex].productQuantity+quantity}
-          return tempCartArray
-        }
-        else if(tempCartArray[itemIndex].productQuantity==1 && quantity==-1){
-          return [...prev.slice(0,itemIndex),...prev.slice(itemIndex+1)]
-        }
-        else{
-          return [...prev]
-        }
 
-      })
+  const updateProductQuantity = (cartItem:Cart,quantity:number)=>{
+    const tempCartArray = [...userCart];
+    const itemIndex = userCart.findIndex((cart)=>cart==cartItem)
+    if (tempCartArray[itemIndex].productQuantity < 20 && quantity === 1) {
+      tempCartArray[itemIndex] = {
+        ...tempCartArray[itemIndex],
+        productQuantity: tempCartArray[itemIndex].productQuantity + quantity,
+      };
+    } else if (tempCartArray[itemIndex].productQuantity > 1 && quantity === -1) {
+      tempCartArray[itemIndex] = {
+        ...tempCartArray[itemIndex],
+        productQuantity: tempCartArray[itemIndex].productQuantity + quantity,
+      };
+    } else if (tempCartArray[itemIndex].productQuantity === 1 && quantity === -1) {
+      tempCartArray.splice(itemIndex, 1);
     }
-  }
+
+  
+    dispatch(setUserCart(tempCartArray));
+  };
 
   return (
     <div ref={cartMenuRef} className='relative left-full'>
