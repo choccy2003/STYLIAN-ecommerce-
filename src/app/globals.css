@@ -322,3 +322,24 @@ transform: scale(1.02);
 
 }
 
+.login-form-animation {
+  animation: login-form-ani 700ms;
+}
+
+@keyframes login-form-ani {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.login-form-background {
+  background-color:hsla(227,27%,24%,1);
+  background-image:
+  radial-gradient(at 8% 98%, hsla(225,12%,22%,1) 0px, transparent 50%),
+  radial-gradient(at 83% 34%, hsla(212,23%,19%,1) 0px, transparent 50%),
+  radial-gradient(at 5% 25%, hsla(224,16%,25%,1) 0px, transparent 50%),
+  radial-gradient(at 26% 34%, hsla(226,13%,39%,1) 0px, transparent 50%);
+}
