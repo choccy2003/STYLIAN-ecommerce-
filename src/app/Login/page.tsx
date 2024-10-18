@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import React, { useState,useEffect } from 'react'
 
-const page = () => {
+const LoginPage = () => {
 
   const [loginFormActive,setLoginFormActive]=useState(true)
   const [mobileView,setMobileView]=useState(false)
@@ -71,4 +71,4 @@ const page = () => {
   )
 }
 
-export default page
+export default LoginPage
