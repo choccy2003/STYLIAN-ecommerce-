@@ -26,16 +26,17 @@ type Product = {
 
 
 const initialState: Product[] = [];
-const ProductSlice = createSlice({
-    name:"products",
+const SearchProductSlice = createSlice({
+    name:"searchProducts",
     initialState,
     reducers: {
-        setProduct:(state,action:PayloadAction<Product[]>)=>{
-          return action.payload;
+        
+        setSearchArray: (state,action:PayloadAction<Product[]>)=>{
+          return action.payload
         }
     }
 }
 
 )
-export const {setProduct} = ProductSlice.actions
-export default ProductSlice.reducer
+export const {setSearchArray} = SearchProductSlice.actions
+export default SearchProductSlice.reducer

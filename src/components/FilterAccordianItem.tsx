@@ -1,7 +1,9 @@
 "use client"
 
+import { store } from "@/store";
 import { useEffect, useRef, useState } from "react"
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { Provider } from "react-redux";
 interface AnimationFunction {
     state: boolean;
     ref: React.RefObject<HTMLDivElement>;
@@ -53,12 +55,13 @@ const FilterAccordianItem:React.FC<Props> = ({children,title})=>{
       handleAnimation({state:categoryAccordian,ref:categoryRef});
     },[click])
     return(
-        
-          <div ref={categoryRef} style={{fontSize:"16px"}}  className="mt-1 h-fit overflow-hidden">
+        <Provider store={store}><div ref={categoryRef} style={{fontSize:"16px"}}  className="mt-1 h-fit overflow-hidden">
             <div className="flex items-center"  onClick={()=>{categoryAccordian?setCategoryAccordian(false):setCategoryAccordian(true);if(categoryRef.current){const contentHeight = categoryRef.current.scrollHeight;
             categoryRef.current.style.setProperty('--dynamic-height',`${contentHeight}px`)};setInitialClick(false);setClick("true") }}>{title} <div ref={arrowIconRef} className="text-2xl mt-0.5 ml-auto transition-all duration-300 "><MdKeyboardArrowDown/></div></div>
             <div>{children}</div>
           </div>
+        </Provider>
+
           
           
     )

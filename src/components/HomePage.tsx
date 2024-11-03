@@ -10,14 +10,19 @@ import { MdSupportAgent } from "react-icons/md";
 import { BsCashCoin } from "react-icons/bs";
 import ProductGrid from "./ProductGrid";
 import ShopRedirectButton from "./ShopRedirectButton";
+import ProductGridProvider from "./ProductGridProvider";
+import ProductPageRedirectButton from "./ProductPageRedirectButton";
+import Navbar from "./Navbar";
 const HomePage:React.FC = ()=>{
 
 
     return(
+        <>
+        <Navbar />
         <div style={{fontFamily:"Roboto",overflowX:"hidden"}}>
            <div style={{fontFamily:"Roboto"}} className="mt-16 ml-64 flex flex-nowrap cursor-default max-2xl:ml-44 max-xl:ml-16 max-md:w-fit max-md:ml-8 max-sm:ml-4 max-md:mt-6 ">
             <div className="relative">
-                <div className="relative z-10 cover-image" style={{minWidth:"620px",backgroundImage:"url(/cover-image.jpeg)",minHeight:"720px",backgroundPositionY:"-70px",borderRadius:"5px",filter:"brightness(85%)"}}>
+                <div className="relative z-10 cover-image" style={{minWidth:"620px",backgroundImage:"url(/cover-image.jpeg)",minHeight:"720px",backgroundPositionY:"-70px",borderRadius:"5px",filter:"brightness(100%)"}}>
                 </div>
                 <div className="absolute top-72 left-12 pattern-image max-2xl:top-56 max-md:top-16 max-sm:-left-12 max-sm:top-8" style={{minWidth:"900px",backgroundImage:"url(/dot.svg)",minHeight:"700px",backgroundPositionX:"10px",backgroundPositionY:"10px",borderRadius:"5px",opacity:"0.5",scale:"0.45"}}>
 
@@ -73,12 +78,14 @@ const HomePage:React.FC = ()=>{
                 <div className="w-fit m-auto text-5xl mt-7 max-xl:text-4xl max-sm:text-3xl max-xl:mt-2">Featured Products</div>
                 <div className="flex mt-10 text-sm justify-evenly w-96 m-auto opacity-70 cursor-pointer max-xl:mt-4"><div>All</div><div>Men</div><div>Women</div><div>Accessories</div><div>New Arrivals</div></div>
                 <div style={{paddingLeft:"5%",paddingRight:"5%"}} className="h-96 mt-10">
-                    <ProductGrid />
+                    <ProductGridProvider />
                 </div>
-                <div className="w-fit m-auto bg-black px-5 py-3 text-sm cursor-pointer mt-24">See All Products</div>
+
+               <ProductPageRedirectButton/>
                 
             </div>
-            <div className="mt-28 max-xl:mt-56 max-md:mt-16">
+            <section style={{scrollMarginTop:"40px"}} id="contact-section">
+<div className="mt-28 max-xl:mt-56 max-md:mt-16">
             <div className="text-5xl tracking-wide w-fit m-auto max-xl:text-4xl max-sm:text-3xl">All About Company</div>
             <div className="opacity-70 w-fit m-auto text-center max-w-sm mt-4 mb-20 max-xl:text-sm max-sm:mt-1 max-sm:mb-10">Official representative of the world-famous clothing
             brand Fashionee in the world.</div>
@@ -159,6 +166,8 @@ const HomePage:React.FC = ()=>{
 
             
         </div>
+            </section>
+            
             <div className="mt-32 max-md:mt-16" style={{display:"grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",justifyContent:"space-evenly",gridGap:"20px"}}><div className="relative" style={{maxWidth:"320px",margin:"auto"}}>
             <div className="relative"><div className="text-7xl text-slate-200"><PiTruck/> </div><div className="text-xl mt-8 text-slate-200">Free Shipping</div><div className="w-full border opacity-90 border-slate-200 border-1 my-2 rounded-md"></div><div className="text-sm opacity-70 mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur incidunt odit illum, elit. Consectetur incidunt odit illum,.</div></div><div className="absolute -bottom-10 left-10" style={{minWidth:"450px",backgroundImage:"url(/dot.svg)",minHeight:"350px",backgroundPositionX:"10px",backgroundPositionY:"10px",borderRadius:"5px",opacity:"0.5",scale:"0.45"}}>
             </div></div><div className="relative" style={{maxWidth:"320px",margin:"auto"}}>
@@ -302,6 +311,7 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae fugit alias sap
                 </div>
             </div>
         </div>
+        </>
         
     )
 }

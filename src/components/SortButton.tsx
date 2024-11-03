@@ -2,6 +2,8 @@
 import { CiFilter } from "react-icons/ci";
 import FilterAccordian from "./FilterAccordian";
 import { useEffect, useRef, useState } from "react";
+import { Provider } from "react-redux";
+import { store } from "@/store";
 const SortButton = ()=>{
 const [filterBtnActivated,setFilterBtnActivated]=useState<boolean>(false)
 const filterGridRef = useRef<HTMLDivElement>(null)
@@ -48,7 +50,10 @@ useEffect(() => {
 <div>Filter</div>
 </div>
 <div ref={filterGridRef} style={{left:"100%"}} className="w-full hidden relative z-50 max-lg:absolute max-lg:top-48 max-lg:px-3 filter-list">
-          <FilterAccordian/>
+  <Provider store={store}>
+             <FilterAccordian/> 
+  </Provider>
+
           
           
         </div>

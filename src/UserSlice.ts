@@ -9,22 +9,30 @@ interface Cart {
 }
 
 interface User {
-    userName:string,
+    user:{
+           userName:string,
     userEmail:string,
     userPhoneNumber:number,
     userPassword:string,
     userCart:Cart[],
-    userWishlist:string[],
+    userWishlist:string[], 
+    },
+    userLoggedIn:boolean
+
 
 }
-const initialState: { user: User | null } = {
-    user: {userName:"hrst",
-    userEmail:"abc",
-    userPhoneNumber:123,
-    userPassword:"123",
-    userCart:[],
-    userWishlist:[]}
-};
+const initialState:User = {
+    user:{
+        userName: "",
+        userEmail: "",
+        userPhoneNumber: 0,
+        userPassword: "",
+        userCart:[],
+        userWishlist:[]
+    },
+    userLoggedIn:false
+}
+
 const UserSlice = createSlice({
     name:"user",
     initialState,
@@ -32,6 +40,9 @@ const UserSlice = createSlice({
         setUserCart : (state,action:PayloadAction<Cart[]>)=>{
             if(state.user)
             state.user.userCart = action.payload
+        },
+        setUserData : (state,action:PayloadAction<User>)=>{
+            return action.payload
         }
 
     }
@@ -40,5 +51,5 @@ const UserSlice = createSlice({
 
 export default UserSlice.reducer
 
-export const {setUserCart} = UserSlice.actions
+export const {setUserCart,setUserData} = UserSlice.actions
 

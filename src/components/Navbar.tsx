@@ -3,17 +3,28 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LuUser2 } from "react-icons/lu";
 import { PiShoppingCartSimple } from "react-icons/pi"
-import { IoIosSearch } from "react-icons/io";
 import "../app/styles.css"
 import { useRef, useState } from "react";
 import { useRouter } from 'next/navigation';
-import CartMenu from "./CartMenu";
 import CartMenuProvider from "./CartMenuProvider";
+import SearchBox from "./small-components/SearchBox";
+import { Provider } from "react-redux";
+import { store } from "@/store";
 
 const Navbar:React.FC = ()=>{
-const searchBox = useRef<HTMLInputElement>(null)
 const router = useRouter()
-const [searchBoxStatus,setSearchBoxStatus]= useState(false)
+const scrollToSection = () => {
+    const section = document.getElementById("contact-section");
+    section?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  };
+  const handleNavigation =  () => {
+    router.push("/"); 
+    setTimeout(scrollToSection, 200); 
+  };
+
 const [cartMenuCloseBtn,setCartMenuCloseBtn] = useState<boolean>(true)
 
     return(
@@ -22,49 +33,22 @@ const [cartMenuCloseBtn,setCartMenuCloseBtn] = useState<boolean>(true)
             <div className="text-2xl" >
                 <GiHamburgerMenu/>
             </div>
-            <div className="ml-8 text-2xl font-medium cursor-pointer  ">
+            <div onClick={()=>{router.push("/")}} className="ml-8 text-2xl font-medium cursor-pointer  ">
                <span>OutfitZen </span>
             </div>
-            <div className="ml-12 cursor-pointer nav-element max-md:hidden">
+            <div onClick={()=>{router.push("/")}} className="ml-12 cursor-pointer nav-element max-md:hidden">
                 Home
-            </div>
-            <div className="ml-12 cursor-pointer nav-element max-md:hidden">
-                Pages
             </div>
             <div onClick={()=>{router.push('/Browse-Products')}} className="ml-12 cursor-pointer nav-element max-md:hidden">
                 Shop
             </div>
-            <div className="ml-12 cursor-pointer nav-element max-md:hidden">
+            <div onClick={()=>{handleNavigation()}} className="ml-12 cursor-pointer nav-element max-md:hidden">
                 Contact
             </div>
-            <div  className="ml-auto mr-10">
-            <input ref={searchBox} style={{backgroundColor:"#1e2028",width:"400px"}} className=" rounded-md h-8 pl-2 textbox-transition" placeholder="Search.." type="text"/>
-            </div>
-            <div onClick={()=>{
-                if(searchBox.current!=null && searchBoxStatus==false){
-                    searchBox.current.style.display="block"
-                    setSearchBoxStatus(true)
-                    searchBox.current.classList.remove('textbox-reverse-transition')
-                    searchBox.current.classList.add('textbox-transition')
-                }
-                else if(searchBox.current!=null && searchBoxStatus==true && searchBox.current.value.length>1){
-                    setSearchBoxStatus(false)
-                    console.log("searching!")
-                }
-                else if(searchBox.current!=null && searchBoxStatus==true && searchBox.current.value.length==0){
-                    setSearchBoxStatus(false)
-                    searchBox.current.classList.remove('textbox-transition')
-                    searchBox.current.classList.add('textbox-reverse-transition')
-                    setTimeout(()=>{
-                        if(searchBox.current)
-                         searchBox.current.style.display="none"
-                    },770)
-                }
-                
-            }} className="text-2xl cursor-pointer ">
-              
-                <IoIosSearch/>
-            </div>
+            <Provider store={store}>
+               <SearchBox/> 
+            </Provider>
+            
             <div style={{fontSize:"21px"}} className="text-xl ml-6 cursor-pointer">
                 <LuUser2/>
             </div>

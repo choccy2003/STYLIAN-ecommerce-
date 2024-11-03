@@ -10,7 +10,6 @@ const PageGrid = ( )=>{
     const {prev,next} = useSelector((state:RootState)=>state.pages)
     const [page,setPages] = useState<number[]>([])
     const dispatch = useDispatch()
-    console.log({prev,next})
     const calculatePages = ()=>{
         const itemsPerPage = 15
         const pages = Math.ceil(products.length / itemsPerPage)
@@ -21,7 +20,6 @@ const PageGrid = ( )=>{
         setPages(pageArray)
         
     }
-    console.log(page)
     useEffect(()=>{
         calculatePages()
             },[products])

@@ -336,10 +336,23 @@ transform: scale(1.02);
 }
 
 .login-form-background {
-  background-color:hsla(227,27%,24%,1);
+  background-color:hsla(218,20%,68%,0.62);
   background-image:
-  radial-gradient(at 8% 98%, hsla(225,12%,22%,1) 0px, transparent 50%),
-  radial-gradient(at 83% 34%, hsla(212,23%,19%,1) 0px, transparent 50%),
-  radial-gradient(at 5% 25%, hsla(224,16%,25%,1) 0px, transparent 50%),
-  radial-gradient(at 26% 34%, hsla(226,13%,39%,1) 0px, transparent 50%);
+  radial-gradient(at 40% 20%, hsla(212,43%,71%,1) 0px, transparent 50%),
+  radial-gradient(at 80% 0%, hsla(217,68%,71%,1) 0px, transparent 50%),
+  radial-gradient(at 0% 49%, hsla(204,24%,41%,0.41) 0px, transparent 50%),
+  radial-gradient(at 80% 50%, hsla(212,7%,43%,0.52) 0px, transparent 50%),
+  radial-gradient(at 0% 100%, hsla(202,44%,67%,1) 0px, transparent 50%),
+  radial-gradient(at 80% 100%, hsla(212,27%,64%,0.63) 0px, transparent 50%);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
 }

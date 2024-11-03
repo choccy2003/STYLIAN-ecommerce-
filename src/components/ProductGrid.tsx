@@ -5,26 +5,30 @@ import ProductCard from "./ProductCard";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import Image from "next/image";
-
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { setProduct } from "@/ProductSlice";
 const ProductGrid: React.FC = () => {
   const [hydrated, setHydrated] = useState(false);
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    (async()=>{
+    const response = await fetch("https://outfitzen-backend.onrender.com/users/fetch-products");
+    const productCatalog = await response.json();
+    dispatch(setProduct(productCatalog))
+    })()
 
+
+  },[])
   useEffect(() => {
     // Ensure component only renders on client
     setHydrated(true);
   }, []);
 
-  const products = [
-    { id: 1, name: 'Product 1',price:56.99 },
-    { id: 2, name: 'Product 2',price:40.99 },
-    { id: 3, name: 'Product 3',price:117.99 },
-    { id: 4, name: 'Product 4',price:35.99 },
-    { id: 5, name: 'Product 5',price:59.99 },
-    { id: 6, name: 'Product 6',price:72.99 }
-  ];
+  const products = useSelector((state:RootState)=>state.products)
 
   const items = products.map(product => (
-    <div key={product.id} style={{ width: "340px", margin: "auto" }} className="item">
+    <div key={product._id} style={{ width: "340px", margin: "auto" }} className="item">
       <ProductCard product={product} />
     </div>
   ));

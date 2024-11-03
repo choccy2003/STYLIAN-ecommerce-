@@ -1,3 +1,5 @@
+"use client"
+
 import CatalogueGridProvider from "@/components/CalatogueGridProvider"
 import CatalogueGrid from "@/components/CatalogueGrid"
 import FilterAccordian from "@/components/FilterAccordian"
@@ -9,35 +11,46 @@ import PageGrid from "@/components/PageGrid"
 import PageGridProvider from "@/components/PageGridProvider"
 import SortButton from "@/components/SortButton"
 import SortList from "@/components/SortList"
-
+import SortListProvider from "@/components/SortListProvider"
+import { store } from "@/store"
+import { Provider } from "react-redux"
 
 
 
 const ProductCataloguePage:React.FC = ()=>{
- 
     return(<div>
     <Navbar/>
     <div className="mt-10 ml-6">
-      <LinkBuilder/>  
+      <LinkBuilder productName=""/>  
     </div>
     <div className="flex items-end">
 <div className="relative z-30 ml-auto">
-      <SortList/>
+      <SortListProvider/>
     </div>
       <SortButton/>
     </div>
     
     
     <div className="flex mt-8 max-lg:mt-4 z-10">
-        <div className="min-w-80 ml-10 -mt-10 relative max-lg:fixed max-lg:-left-96">
-          <FilterAccordian />
+  <div className="min-w-80 ml-10 -mt-5 relative max-lg:!fixed max-lg:!-left-96">
+    <Provider store={store}>
+            <FilterAccordian />    
+    </Provider>
+
           
           
         </div>
-        
+
+        <div className="flex flex-col w-full max-lg:w-screen max-lg:mr-0 mr-10">
         <CatalogueGridProvider/>
+        <div className="mt-auto">
+        <PageGridProvider/>
+        </div>
+
+        </div>
+
     </div>
-    <PageGridProvider/>
+    
     
        <Footer/> 
    
