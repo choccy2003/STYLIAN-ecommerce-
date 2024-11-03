@@ -45,12 +45,12 @@ const LoginPage = () => {
     };
   }, []);
 
-  const handleInputChange = <FormDataType extends LoginForm | SignupForm>(e:any,useStateSetFunction:Dispatch<SetStateAction<FormDataType>>,formData:FormDataType)=>{
+  const handleInputChange = <FormDataType extends LoginForm | SignupForm>(e:any,stateSetFunction:Dispatch<SetStateAction<FormDataType>>,formData:FormDataType)=>{
       const {name,value}= e.target
-      useStateSetFunction({...formData,[name]:value})
+      stateSetFunction({...formData,[name]:value})
   }
   const handleLoginSubmit = async()=>{
-    const response = await fetch('http://localhost:3001/users/login',{
+    const response = await fetch('https://outfitzen-backend.onrender.com/users/login',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const LoginPage = () => {
   const handleSignupSubmit = ()=>{
     (async()=>{
     if(signupFormData.userEmail && signupFormData.userName && signupFormData.userPassword && !otpFieldData){
-      const response = await fetch('http://localhost:3001/users/signup',{
+      const response = await fetch('https://outfitzen-backend.onrender.com/users/signup',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ const LoginPage = () => {
      
     }
     if(otpFieldData && otpFieldShow){
-      const response = await fetch('http://localhost:3001/users/signup',{
+      const response = await fetch('https://outfitzen-backend.onrender.com/users/signup',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ const LoginPage = () => {
 
   }
   const handleOtpRegenrate=async()=>{
-    const response = await fetch('http://localhost:3001/users/signup',{
+    const response = await fetch('https://outfitzen-backend.onrender.com/users/signup',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
