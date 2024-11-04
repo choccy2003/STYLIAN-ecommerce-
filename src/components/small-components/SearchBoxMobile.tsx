@@ -6,7 +6,7 @@ import React from 'react'
 import { useRef, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
-const SearchBox = () => {
+const SearchBoxMobile = () => {
     const [searchBoxStatus,setSearchBoxStatus]= useState(false)
     const searchBox = useRef<HTMLInputElement>(null)
     const products = useSelector((state:RootState)=>state.products)
@@ -23,14 +23,12 @@ const SearchBox = () => {
 
   return (
     <>            <div  className="ml-auto mr-10">
-    <input ref={searchBox} onChange={(e)=>{handleSearch(e)}} style={{backgroundColor:"rgb(27, 29, 37)",width:"400px"}} className=" rounded-md h-8 pl-2 textbox-transition" placeholder="Search.." type="text"/>
+    <input ref={searchBox} onChange={(e)=>{handleSearch(e)}} style={{backgroundColor:"rgb(27, 29, 37)",width:"90%",marginLeft:"5%"}} className="absolute left-0 top-12 hidden rounded-md h-8 pl-2" placeholder="Search.." type="text"/>
     </div>
     <div onClick={(e)=>{
         if(searchBox.current!=null && searchBoxStatus==false){
             searchBox.current.style.display="block"
             setSearchBoxStatus(true)
-            searchBox.current.classList.remove('textbox-reverse-transition')
-            searchBox.current.classList.add('textbox-transition')
         }
         else if(searchBox.current!=null && searchBoxStatus==true && searchBox.current.value.length>1){
             setSearchBoxStatus(false)
@@ -39,19 +37,14 @@ const SearchBox = () => {
         }
         else if(searchBox.current!=null && searchBoxStatus==true && searchBox.current.value.length==0){
             setSearchBoxStatus(false)
-            searchBox.current.classList.remove('textbox-transition')
-            searchBox.current.classList.add('textbox-reverse-transition')
-            setTimeout(()=>{
-                if(searchBox.current)
-                 searchBox.current.style.display="none"
-            },470)
+            searchBox.current.style.display="none"
         }
         
-    }} className="text-2xl cursor-pointer ">
+    }} className="text-2xl relative left-4 cursor-pointer ">
       
         <IoIosSearch/>
     </div></>
   )
 }
 
-export default SearchBox
+export default SearchBoxMobile

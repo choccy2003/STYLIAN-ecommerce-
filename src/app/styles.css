@@ -2,7 +2,7 @@
     padding-left: 10px;
     display: none;
     outline: none;
-    animation: textbox 800ms ease-in-out;
+    animation: textbox 500ms ease-in-out;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -23,7 +23,7 @@
     padding-left: 10px;
     display: none;
     outline: none;
-    animation: textbox-reverse 800ms ease-in-out;
+    animation: textbox-reverse 500ms ease-in-out;
     overflow: hidden;
     white-space: nowrap;
 }

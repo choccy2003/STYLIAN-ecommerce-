@@ -52,6 +52,24 @@ const [selectedSize,SetSelectedSize]=useState<string>('')
 const user = useSelector((state:RootState)=>state.user.user)
 const userCart = user?user.userCart:[]
 const dispatch = useDispatch()
+const [mobileWidth,setMobileWidth]=useState<boolean>(false)
+useEffect(() => {
+    const handleResize = () => {
+        if (window.innerWidth < 500) {
+            setMobileWidth(true);
+        } else {
+            setMobileWidth(false);
+        }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+        window.removeEventListener('resize', handleResize);
+    };
+}, []);
   useEffect(()=>{
     (async()=>{
   try{
@@ -110,9 +128,11 @@ if(productData){
     return(<>
    
     <Navbar/>
-    <div className="mt-10 ml-6">
+    {!mobileWidth && (
+          <div>
 <LinkBuilder productName={productData.productName} />
     </div>
+    )}
     <ToastContainer position="top-right" theme="dark" autoClose={1000} />
     <div className='mt-10'>
         <div className='flex relative max-1.5xl:flex-col max-1.5xl:gap-8 max-xl:gap-12'>

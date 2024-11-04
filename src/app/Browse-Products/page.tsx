@@ -14,15 +14,35 @@ import SortList from "@/components/SortList"
 import SortListProvider from "@/components/SortListProvider"
 import { store } from "@/store"
 import { Provider } from "react-redux"
-
+import { useEffect, useState } from 'react';
 
 
 const ProductCataloguePage:React.FC = ()=>{
+  const [mobileWidth,setMobileWidth]=useState<boolean>(false)
+useEffect(() => {
+    const handleResize = () => {
+        if (window.innerWidth < 500) {
+            setMobileWidth(true);
+        } else {
+            setMobileWidth(false);
+        }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+        window.removeEventListener('resize', handleResize);
+    };
+}, []);
     return(<div>
     <Navbar/>
-    <div className="mt-10 ml-6">
-      <LinkBuilder productName=""/>  
+    {!mobileWidth && (
+          <div>
+<LinkBuilder productName={''} />
     </div>
+    )}
     <div className="flex items-end">
 <div className="relative z-30 ml-auto">
       <SortListProvider/>

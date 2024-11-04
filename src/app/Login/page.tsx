@@ -151,12 +151,12 @@ const LoginPage = () => {
       </div>
       <ToastContainer position="top-right" theme="dark" />
        <div style={{placeItems:"center",height:"95vh"}} className='grid '>
-<div className='flex w-fit mx-auto relative mt-12 max-1.5xl:mt-0 max-1.5xl:flex-col rounded-md login-form-background'>
+<div className='flex w-fit mx-auto relative mt-12 max-1.5xl:mt-0 max-1.5xl:flex-col rounded-sm login-form-background'>
         
         
         <div className='relative'>
-          <div className='absolute z-10 transition-all duration-500 max-1.5xl:!w-96' style={{filter:"brightness(85%)",minWidth:"650px",top:`${mobileView?(loginFormActive?"0%":"100%"):("unset")}`,left:`${!mobileView?(loginFormActive?"0%":"100%"):("unset")}`}}>
-            <img className='rounded-md max-1.5xl:w-96' width={650} src={"/loginPageCover.png"}/>
+          <div className='absolute z-10 bg-black transition-all duration-500 max-1.5xl:!w-96' style={{filter:"brightness(85%)",width:"650px",top:`${mobileView?(loginFormActive?"0%":"100%"):("unset")}`,left:`${!mobileView?(loginFormActive?"0%":"100%"):("unset")}`}}>
+            <img className='rounded-sm max-1.5xl:w-96' width={650} src={"/loginPageCover.png"}/>
             {loginFormActive?(<div key={"login-form"} style={{fontSize:"24px",width:"650px"}} className={`absolute top-0 mt-80 max-1.5xl:mt-40 max-1.5xl:!text-lg text-center login-form-animation max-1.5xl:!w-96`}><div className='mb-2 max-1.5xl:mb-1'>New to OutfitZen?</div><div className="w-fit m-auto bg-black px-7 py-1 text-base cursor-pointer max-1.5xl:text-sm max-1.5xl:px-5" onClick={()=>{loginFormActive?setLoginFormActive(false):setLoginFormActive(true)}}>Join Now</div></div>):(<div key={"register-form"} style={{fontSize:"24px",width:"650px"}} className={`absolute top-0 mt-80 max-1.5xl:mt-40 text-center login-form-animation max-1.5xl:!w-96 max-1.5xl:!text-lg`}><div className='mb-2 max-1.5xl:mb-1'>Already a member?</div><div className="w-fit m-auto bg-black px-7 py-1 text-base cursor-pointer max-1.5xl:text-sm max-1.5xl:px-5" onClick={()=>{loginFormActive?setLoginFormActive(false):setLoginFormActive(true)}}>Log In</div></div>)}
             
         </div>

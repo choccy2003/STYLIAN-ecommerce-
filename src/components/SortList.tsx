@@ -31,7 +31,8 @@ const SortList = ()=>{
     }
     const handleAnimation = ()=>{
             if(DropDownRef.current && !dropDownOpen){
-                 DropDownRef.current.style.border="2px solid rgb(255,255,255,0.4)"
+                 DropDownRef.current.style.borderLeft="2px solid rgb(255,255,255,0.4)"
+                 DropDownRef.current.style.borderRight="2px solid rgb(255,255,255,0.4)"
                 DropDownRef.current.classList.remove("sortAnimationReverse")
                 DropDownRef.current.classList.add("sortAnimation")
                  DropDownRef.current.style.height="fit-content"
@@ -50,8 +51,8 @@ const SortList = ()=>{
 
     return (<>
     <div  className="flex mt-8 gap-4 items-center font-medium mr-7 "><div className="ml-auto cursor-default">Sort By</div><div style={{borderRadius:"5px",border:"2px solid rgb(255,255,255,0.4)",width:"127px"}} className=" flex gap-1 items-center py-1 px-2 cursor-pointer relative">
-    <div style={{backgroundColor:"#1e2028",position:"relative",zIndex:"50"}} onClick={()=>{dropDownOpen?setDropDownOpen(false):setDropDownOpen(true);if(DropDownRef.current){const contentHeight = DropDownRef.current.scrollHeight;
-                DropDownRef.current.style.setProperty('--dynamic-height-sort',`${contentHeight}px`)}; handleAnimation()}} className="relative flex items-center"><div style={{width:"83px"}}>{selectedSortOption}</div><div className="relative left-1.5" style={{fontSize:"24px"}}><MdKeyboardArrowDown/></div></div><div ref={DropDownRef}  style={{width:"127px",borderRadius:"5px",borderTop:"0px",borderTopLeftRadius:"0px",borderTopRightRadius:"0px",marginLeft:"-10px",top:"176px",backgroundColor:"#1e2028",position:"fixed",zIndex:"0"}} className="h-0 overflow-hidden">
+    <div style={{position:"relative",zIndex:"50"}} onClick={()=>{dropDownOpen?setDropDownOpen(false):setDropDownOpen(true);if(DropDownRef.current){const contentHeight = DropDownRef.current.scrollHeight;
+                DropDownRef.current.style.setProperty('--dynamic-height-sort',`${contentHeight}px`)}; handleAnimation()}} className="relative flex items-center"><div style={{width:"83px"}}>{selectedSortOption}</div><div className="relative left-1.5" style={{fontSize:"24px"}}><MdKeyboardArrowDown/></div></div><div ref={DropDownRef}  style={{width:"127px",borderRadius:"5px",borderTop:"0px",borderTopLeftRadius:"0px",borderTopRightRadius:"0px",marginLeft:"-10px",top:"32px",backgroundColor:"#1e2028",position:"absolute",zIndex:"-10",borderBottom:"0px"}} className="h-0 overflow-hidden">
                     
                     {sortOptions.map((option)=>{
                         if(option!=selectedSortOption){
