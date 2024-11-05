@@ -1,4 +1,5 @@
 "use client"
+import { setSearchBoxState } from "@/SearchBoxStateSlice";
 import { setSearchArray } from "@/SearchProductSlice";
 import { RootState } from "@/store";
 import { useRef, useState } from "react";
@@ -19,10 +20,12 @@ const SortList = ()=>{
         if(sortOption=="Price (low)"){
           const sortedArray=productList.sort((a,b)=> a.productPrice - b.productPrice)  
           dispatch(setSearchArray(sortedArray))
+          dispatch(setSearchBoxState(true))
         }
         else if(sortOption=="Price (high)"){
             const sortedArray=productList.sort((a,b)=> b.productPrice - a.productPrice)  
             dispatch(setSearchArray(sortedArray))
+            dispatch(setSearchBoxState(true))
         }
         else{
             dispatch(setSearchArray(productList))
