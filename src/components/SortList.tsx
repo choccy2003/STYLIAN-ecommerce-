@@ -19,13 +19,15 @@ const SortList = ()=>{
         const productList = searchArray.length>0?[...searchArray]:[...products]
         if(sortOption=="Price (low)"){
           const sortedArray=productList.sort((a,b)=> a.productPrice - b.productPrice)  
-          dispatch(setSearchArray(sortedArray))
           dispatch(setSearchBoxState(true))
+          dispatch(setSearchArray(sortedArray))
+          
         }
         else if(sortOption=="Price (high)"){
-            const sortedArray=productList.sort((a,b)=> b.productPrice - a.productPrice)  
+            const sortedArray=productList.sort((a,b)=> b.productPrice - a.productPrice) 
+            dispatch(setSearchBoxState(true)) 
             dispatch(setSearchArray(sortedArray))
-            dispatch(setSearchBoxState(true))
+           
         }
         else{
             dispatch(setSearchArray(productList))
